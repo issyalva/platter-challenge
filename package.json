@@ -1,0 +1,28 @@
+{
+  "name": "platter-challenge",
+  "version": "1.0.0",
+  "description": "Platter technical assessment",
+  "homepage": "https://github.com/issyalva/platter-challenge#readme",
+  "bugs": {
+    "url": "https://github.com/issyalva/platter-challenge/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/issyalva/platter-challenge.git"
+  },
+  "license": "ISC",
+  "author": "Isaac Alvarez",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "dev": "concurrently \"npm run shopify:dev\" \"npm run tailwind:watch\"",
+    "shopify:dev": "shopify theme dev -e dev",
+    "tailwind:watch": "npx @tailwindcss/cli -i assets/tailwind.input.css -o ./assets/tailwind.output.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.16",
+    "concurrently": "^9.2.1",
+    "tailwindcss": "^4.1.16"
+  }
+}
