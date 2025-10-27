@@ -13,6 +13,10 @@
     {{ content_for_header }}
 
     {{ 'tailwind.output.css' | asset_url | stylesheet_tag }}
+    
+    {% # Carousel assets %}
+    {{ 'carousel.bundle.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'carousel.bundle.js' | asset_url }}" defer></script>
   </head>
 
   <body>

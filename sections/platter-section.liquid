@@ -1,0 +1,82 @@
+{% liquid
+  assign title = section.settings.heading
+  assign collection_handle = section.settings.collection
+%}
+
+<script>
+  console.log('title: {{ title | json }}');
+  console.log('collection: {{ collection_handle | json }}');
+</script>
+
+<div class="swiper-section">
+  {% if section.settings.heading != blank %}
+    <h2 class="text-center text-2xl font-bold mb-6">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {% for product in collections[collection_handle].products %}
+          <div class="swiper-slide">
+            {% render 'image',
+              image: product.featured_image,
+              width: 800,
+              height: 600,
+              class: 'w-full h-auto object-cover'
+            %}
+            <div class="slide-content p-4">
+              <h3 class="text-xl font-semibold">{{ product.title }}</h3>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Platter Challenge Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured Carousel"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Slide Title",
+          "default": "Slide Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Slide Description",
+          "default": "Add your slide description here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Platter Challenge Section"
+    }
+  ]
+}
+{% endschema %}
