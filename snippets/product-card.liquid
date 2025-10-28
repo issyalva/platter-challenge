@@ -1,21 +1,33 @@
 <div class="product-card">
-  <div class="aspect-square rounded-[10px] overflow-hidden w-full max-w-[355px] h-full max-h-[355px]">
-    {% comment %} {%  render 'product-badges', product: product %} {% endcomment %}
-    {% render 'image',
-      image: product.featured_image,
-      width: 600,
-      height: 600,
-      class: 'w-full h-full object-cover'
-    %}
-    {% comment %} {%  render 'image',
-      image: product.images[1],
-      width: 600,
-      height: 600,
-      class: 'w-full h-full object-cover'  
-    %} {% endcomment %}
-  </div>
+  <a href="{{ product.url }}" class="block w-full h-full" aria-label="View {{ product.title | escape }}">
+    <div class="product-image-container aspect-square rounded-[10px] overflow-hidden w-full max-w-[355px] h-full max-h-[355px] relative{% if product.images[1] != blank %} has-second-image{% endif %}">
+      {% comment %} {%  render 'product-badges', product: product %} {% endcomment %}
+      <div class="primary-image absolute inset-0 transition-opacity duration-300">
+        {% render 'image',
+          image: product.featured_image,
+          width: 600,
+          height: 600,
+          class: 'w-full h-full object-cover',
+          alt: product.featured_image.alt | default: product.title
+        %}
+      </div>
+      {% if product.images[1] != blank %}
+        <div class="hover-image absolute inset-0 opacity-0 transition-opacity duration-300">
+          {% render 'image',
+            image: product.images[1],
+            width: 600,
+            height: 600,
+            class: 'w-full !h-full object-cover',
+            alt: product.images[1].alt | default: product.title
+          %}
+        </div>
+      {% endif %}
+    </div>
+  </a>
   <div class="grid gap-y-3 p-3">
-    <h3 class="text-xl font-semibold">{{ product.title }}</h3>
-    <p>{{  product.price | money }}</p>
+    <a href="{{ product.url }}" class="block hover:underline">
+      <h3 class="text-xl font-semibold">{{ product.title }}</h3>
+    </a>
+    <p aria-label="Price: {{ product.price | money }}">{{ product.price | money }}</p>
   </div>
 </div>
