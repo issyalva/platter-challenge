@@ -1,9 +1,13 @@
+{{ 'platter-section.css' | asset_url | stylesheet_tag }}
+{{ 'platter-section.js' | asset_url | script_tag }}
+
 {% liquid
   assign title = section.settings.heading
   assign collection_handle = section.settings.collection
 %}
 
 <script>
+  console.log('Section loaded');
   console.log('title: {{ title | json }}');
   console.log('collection: {{ collection_handle | json }}');
 </script>
@@ -15,11 +19,26 @@
   <div class="swiper">
     <div class="swiper-wrapper">
       {% for product in collections[collection_handle].products %}
-        {%  render 'product-card', product: product %}
+        <div class="swiper-slide max-w-fit">
+          {% render 'product-card', product: product %}
+        </div>
       {% endfor %}
     </div>
     <div class="swiper-pagination"></div>
   </div>
+</div>
+
+<div class="lg:hidden">
+  <div class="grid grid-cols-2" data-display-first-four>
+    {% for product in collections[collection_handle].products %}
+      <div class="inline-grid mobile-view-more">
+        {%  render 'product-card', product: product %}
+      </div>
+    {% endfor %}
+  </div>
+  <button class="py-4 px-6 bg-[#1c1d1d] text-white rounded-full cursor-pointer" data-view-all-button>
+    Show More
+  </button>
 </div>
 
 {% schema %}

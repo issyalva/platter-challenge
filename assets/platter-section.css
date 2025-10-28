@@ -1,0 +1,3 @@
+[data-display-first-four] > .mobile-view-more:nth-child(n + 5) {
+  display: none;
+}
