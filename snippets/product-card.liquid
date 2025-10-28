@@ -24,10 +24,11 @@
       {% endif %}
     </div>
   </a>
-  <div class="grid gap-y-3 p-3">
-    <a href="{{ product.url }}" class="block hover:underline">
-      <h3 class="text-xl font-semibold">{{ product.title }}</h3>
+  <div class="grid gap-y-2 p-3">
+    <a href="{{ product.url }}" class="hover:no-underline">
+      <span class="font-bebas text-lg">{{ product.title }}</span>
     </a>
-    <p aria-label="Price: {{ product.price | money }}">{{ product.price | money }}</p>
+    {% render 'product-card-reviews' %}
+    <p aria-label="Price: {{ product.price | money }}" class="font-poppins font-medium text-base text-[#1C1D1D]">{{ product.price | money }}</p>
   </div>
 </div>

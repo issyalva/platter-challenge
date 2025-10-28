@@ -3,8 +3,8 @@
 {{ 'platter-section.js' | asset_url | script_tag }}
 
 {% liquid
-  assign title = section.settings.heading
   assign collection_handle = section.settings.collection
+  assign title = collections[collection_handle].title | default: section.settings.heading
 %}
 
 <script>
@@ -13,10 +13,18 @@
   console.log('collection: {{ collection_handle | json }}');
 </script>
 
+<div class="flex justify-center lg:justify-between items-center">
+{% if title != blank %}
+  <h2 class="font-source-serif font-black text-[#231F20] text-[1.75rem] lg:text-[2.5rem]">{{ title }}</h2>
+{% endif %}
+  <div class="hidden lg:flex">
+    <a href="/collections/{{ collection_handle }}" class="ml-auto text-sm font-poppins font-medium text-[#5C553A] inline-flex items-center gap-x-1">
+      Shop All {{ title }} <img src="{{ 'arrow-narrow-right.svg' | asset_url }}" alt="" width="16" height="16" class="w-4 h-4">
+    </a>
+  </div>
+</div>
+
 <div class="swiper-section hidden lg:block">
-  {% if section.settings.heading != blank %}
-    <h2 class="text-center text-2xl font-bold mb-6">{{ section.settings.heading }}</h2>
-  {% endif %}
   <div class="swiper">
     <div class="swiper-wrapper">
       {% for product in collections[collection_handle].products %}
@@ -32,7 +40,7 @@
 <div class="lg:hidden">
   <div class="grid grid-cols-2" data-display-first-four>
     {% for product in collections[collection_handle].products %}
-      <div class="inline-grid mobile-view-more">
+      <div class="mobile-view-more">
         {%  render 'product-card', product: product %}
       </div>
     {% endfor %}
@@ -56,31 +64,6 @@
       "type": "collection",
       "id": "collection",
       "label": "Collection"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "slide",
-      "name": "Slide",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Slide Image"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Slide Title",
-          "default": "Slide Title"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Slide Description",
-          "default": "Add your slide description here"
-        }
-      ]
     }
   ],
   "presets": [

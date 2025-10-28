@@ -1,0 +1,57 @@
+/* Source Serif Pro - Variable */
+@font-face {
+  font-family: 'Source Serif Pro';
+  src: url('SourceSerif4-Variable.ttf') format('truetype-variations');
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Source Serif Pro - Variable Italic */
+@font-face {
+  font-family: 'Source Serif Pro';
+  src: url('SourceSerif4-Italic-Variable.ttf') format('truetype-variations');
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Poppins - 400 */
+@font-face {
+  font-family: 'Poppins';
+  src: url('Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Poppins - 500 */
+@font-face {
+  font-family: 'Poppins';
+  src: url('Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bebas Neue - 400 */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('BebasNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Font Classes for easy use */
+.font-source-serif {
+  font-family: 'Source Serif Pro', serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-bebas {
+  font-family: 'Bebas Neue', sans-serif;
+}
