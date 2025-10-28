@@ -1,8 +1,8 @@
 <div class="product-card">
-  <a href="{{ product.url }}" class="block w-full h-full" aria-label="View {{ product.title | escape }}">
-    <div class="product-image-container aspect-square rounded-[10px] overflow-hidden w-full max-w-[355px] h-full max-h-[355px] relative{% if product.images[1] != blank %} has-second-image{% endif %}">
+  <a href="{{ product.url }}" class="group block w-full h-full" aria-label="View {{ product.title | escape }}">
+    <div class="aspect-square rounded-[10px] overflow-hidden w-full max-w-[355px] h-full max-h-[355px] relative">
       {% comment %} {%  render 'product-badges', product: product %} {% endcomment %}
-      <div class="primary-image absolute inset-0 transition-opacity duration-300">
+      <div class="relative inset-0 transition-opacity duration-300 group-hover:opacity-0">
         {% render 'image',
           image: product.featured_image,
           width: 600,
@@ -12,12 +12,12 @@
         %}
       </div>
       {% if product.images[1] != blank %}
-        <div class="hover-image absolute inset-0 opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           {% render 'image',
             image: product.images[1],
             width: 600,
             height: 600,
-            class: 'w-full !h-full object-cover',
+            class: 'w-full h-full object-cover',
             alt: product.images[1].alt | default: product.title
           %}
         </div>

@@ -12,12 +12,12 @@
 
     {{ content_for_header }}
 
-    {{ 'fonts.css' | asset_url | stylesheet_tag }}
-    {{ 'tailwind.output.css' | asset_url | stylesheet_tag }}
-    
     {% # Carousel assets %}
     {{ 'carousel.bundle.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'carousel.bundle.js' | asset_url }}" defer></script>
+
+    {{ 'fonts.css' | asset_url | stylesheet_tag }}
+    {{ 'tailwind.output.css' | asset_url | stylesheet_tag }}
   </head>
 
   <body>

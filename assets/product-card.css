@@ -1,7 +1,0 @@
-.product-image-container.has-second-image:hover .primary-image {
-  opacity: 0;
-}
-
-.product-image-container.has-second-image:hover .hover-image {
-  opacity: 1;
-}
