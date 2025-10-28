@@ -1,0 +1,9 @@
+<div>
+  {% if product.tags contains 'Sale' %}
+    <span class="badge badge--sale">Sale</span>
+  {% endif %}
+  
+  {% if product.tags contains 'New' %}
+    <span class="badge badge--new">New</span>
+  {% endif %}
+</div>

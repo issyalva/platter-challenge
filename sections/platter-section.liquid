@@ -8,27 +8,17 @@
   console.log('collection: {{ collection_handle | json }}');
 </script>
 
-<div class="swiper-section">
+<div class="swiper-section hidden lg:block">
   {% if section.settings.heading != blank %}
     <h2 class="text-center text-2xl font-bold mb-6">{{ section.settings.heading }}</h2>
   {% endif %}
-
   <div class="swiper">
     <div class="swiper-wrapper">
       {% for product in collections[collection_handle].products %}
-          <div class="swiper-slide">
-            {% render 'image',
-              image: product.featured_image,
-              width: 800,
-              height: 600,
-              class: 'w-full h-auto object-cover'
-            %}
-            <div class="slide-content p-4">
-              <h3 class="text-xl font-semibold">{{ product.title }}</h3>
-            </div>
-          </div>
+        {%  render 'product-card', product: product %}
       {% endfor %}
     </div>
+    <div class="swiper-pagination"></div>
   </div>
 </div>
 

@@ -5034,29 +5034,30 @@
       init_swiper2();
       init_navigation2();
       init_pagination2();
-      document.addEventListener("DOMContentLoaded", function() {
-        new Swiper(".swiper", {
-          modules: [Navigation, Pagination],
-          slidesPerView: 1,
-          spaceBetween: 30,
-          loop: true,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true
-          },
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev"
-          },
-          breakpoints: {
-            640: {
-              slidesPerView: 2
-            },
-            1024: {
-              slidesPerView: 3
+      var swiperInstance = null;
+      var isDesktop = () => window.innerWidth >= 1024;
+      var initSwiper = () => {
+        if (isDesktop() && !swiperInstance) {
+          swiperInstance = new Swiper(".swiper", {
+            modules: [Navigation, Pagination],
+            slidesPerView: "auto",
+            spaceBetween: 30,
+            pagination: {
+              el: ".swiper-pagination",
+              type: "progressbar"
             }
-          }
-        });
+          });
+        } else if (!isDesktop() && swiperInstance) {
+          swiperInstance.destroy(true, true);
+          swiperInstance = null;
+        }
+      };
+      var handleResize = () => {
+        initSwiper();
+      };
+      document.addEventListener("DOMContentLoaded", function() {
+        initSwiper();
+        window.addEventListener("resize", handleResize);
       });
     }
   });
