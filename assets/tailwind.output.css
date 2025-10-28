@@ -281,6 +281,9 @@
   .max-w-fit {
     max-width: fit-content;
   }
+  .flex-shrink {
+    flex-shrink: 1;
+  }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
