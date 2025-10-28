@@ -1,9 +1,10 @@
-<div>
-  {% if product.tags contains 'Sale' %}
-    <span class="badge badge--sale">Sale</span>
+<div class="flex justify-between {{ class }}">
+  {% assign badge_styles = 'border border-black rounded-full font-bebas text-[10px] py-0.5 px-1.5 flex items-cente' %}
+  {% if product.tags contains 'badge:best-seller' %}
+    <span class="{{  badge_styles }} bg-white">Best Seller</span>
   {% endif %}
   
-  {% if product.tags contains 'New' %}
-    <span class="badge badge--new">New</span>
+  {% if product.price < product.compare_at_price %}
+    <span class="{{  badge_styles }} bg-[#5C7962] text-white ml-auto">Save 15%</span>
   {% endif %}
 </div>

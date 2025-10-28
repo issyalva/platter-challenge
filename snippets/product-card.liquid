@@ -1,7 +1,10 @@
 <div class="product-card">
-  <a href="{{ product.url }}" class="group block w-full h-full" aria-label="View {{ product.title | escape }}">
+  <a href="{{ product.url }}" class="group block w-full h-full relative" aria-label="View {{ product.title | escape }}">
+    {% render 'product-badges',
+      product: product,
+      class: 'absolute top-0 w-full z-10 p-2'
+    %}
     <div class="aspect-square rounded-[10px] overflow-hidden w-full max-w-[355px] h-full max-h-[355px] relative">
-      {% comment %} {%  render 'product-badges', product: product %} {% endcomment %}
       <div class="relative inset-0 transition-opacity duration-300 group-hover:opacity-0">
         {% render 'image',
           image: product.featured_image,
