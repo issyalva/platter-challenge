@@ -1,6 +1,5 @@
 ## Quick Links
 - **Theme Preview:** https://platter-challenge.myshopify.com/?preview_theme_id=181572174140
-- **Theme Customizer:** https://platter-challenge.myshopify.com/admin/themes/181572174140/editor?hr=9292
 - **Store Password:** bazeud
 
 ---
@@ -165,3 +164,4 @@ Visit our [CONTRIBUTING.md](./CONTRIBUTING.md) for a detailed overview of our pr
 ## License
 
 Skeleton Theme is open-sourced under the [MIT](./LICENSE.md) License.
+
