@@ -1,6 +1,6 @@
 {% liquid
   assign collection_handle = section.settings.collection
-  assign title = collections[collection_handle].title | default: section.settings.heading
+  assign title = section.settings.heading | default: collections[collection_handle].title
 %}
 
 {% if collection_handle != blank %}

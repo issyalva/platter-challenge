@@ -1,3 +1,10 @@
+## Quick Links
+- **Theme Preview:** https://platter-challenge.myshopify.com/?preview_theme_id=181572174140
+- **Theme Customizer:** https://platter-challenge.myshopify.com/admin/themes/181572174140/editor?hr=9292
+- **Store Password:** bazeud
+
+---
+
 <h1 align="center" style="position: relative;">
   <br>
     <img src="./assets/shoppy-x-ray.svg" alt="logo" width="200">
