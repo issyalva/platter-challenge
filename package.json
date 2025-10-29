@@ -19,7 +19,7 @@
     "dev": "concurrently \"npm run shopify:dev\" \"npm run tailwind:watch\" \"npm run js:watch\"",
     "shopify:dev": "shopify theme dev -e dev",
     "tailwind:watch": "npx @tailwindcss/cli -i assets/tailwind.input.css -o ./assets/tailwind.output.css --watch",
-    "js:build": "esbuild assets/js/carousel.js --bundle --outfile=assets/carousel.bundle.js",
+    "js:build": "esbuild src/js/carousel.js --bundle --minify --outfile=assets/carousel.bundle.min.js",
     "js:watch": "npm run js:build -- --watch"
   },
   "dependencies": {
