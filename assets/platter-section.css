@@ -1,3 +1,24 @@
-[data-display-first-four] > .mobile-view-more:nth-child(n + 5) {
-  display: none;
+[data-display-first-four] {
+  position: relative;
+}
+
+[data-display-first-four] > .mobile-view-more {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+[data-display-first-four] > .mobile-view-more:nth-child(-n+4) {
+  position: static;
+  max-height: none;
+  opacity: 1;
+}
+
+.mobile-view-more.open {
+  position: static;
+  max-height: var(--target-height);
+  opacity: 1;
 }
