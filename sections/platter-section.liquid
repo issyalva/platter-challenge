@@ -5,16 +5,22 @@
 
 {% if collection_handle != blank %}
   {{ 'platter-section.css' | asset_url | stylesheet_tag }}
-  {{ 'platter-section.js' | asset_url | script_tag }}
+  <script src="{{ 'platter-section.js' | asset_url }}" defer></script>
 
-  <div class="full-width py-6 lg:py-10 pl-6 lg:pl-10">
-    <div class="flex justify-center lg:justify-between items-center pr-6 lg:pr-10 mb-6 lg:mb-10">
+  <div class="full-width py-8 pl-5 lg:py-16 lg:pl-16">
+    <div class="flex justify-center lg:justify-between items-center pr-6 lg:pr-16 mb-6 lg:mb-10">
       {% if title != blank %}
-        <h2 class="font-source-serif font-black text-[#231F20] text-[1.75rem] lg:text-[2.5rem]">{{ title }}</h2>
+        <h2 class="font-source-serif font-black text-[#231F20] text-[1.75rem] lg:text-[2.5rem] tracking-[-0.01em]">
+          {{ title }}
+        </h2>
       {% endif %}
       <div class="hidden lg:flex ml-auto">
-        <a href="{{ collections[collection_handle].url }}" class="ml-auto text-sm font-poppins font-medium text-[#5C553A] inline-flex items-center gap-x-1">
-          Shop {{ title }} <img src="{{ 'arrow-narrow-right.svg' | asset_url }}" alt="" width="16" height="16" class="w-4 h-4">
+        <a
+          href="{{ collections[collection_handle].url }}"
+          class="ml-auto text-sm font-poppins font-semibold text-[#5C553A] inline-flex gap-2 py-4 px-8 items-center gap-x-1 tracking-[0.03em]"
+        >
+          Shop {{ title }}
+          <img src="{{ 'arrow-narrow-right.svg' | asset_url }}" alt="" width="16" height="16" class="w-4 h-4">
         </a>
       </div>
     </div>
@@ -28,21 +34,26 @@
             </div>
           {% endfor %}
         </div>
-        <div class="h-1.5 relative mr-6 lg:mr-10 mt-6 lg:mt-10">
-          <div class="swiper-pagination bottom-0 [&>span]:bg-[#231F20]! hover:h-1.5! transition-[height] duration-300 ease-in-out"></div>
+        <div class="h-1.5 relative mr-16 mt-10">
+          <div
+            class="swiper-pagination bottom-0 [&>span]:bg-[#231F20]! hover:h-1.5! transition-[height] duration-300 ease-in-out"
+          ></div>
         </div>
       </div>
     </div>
     {% comment %} Mobile View More Section {% endcomment %}
-    <div class="lg:hidden pr-6 lg:pr-10">
-      <div class="grid grid-cols-2" data-display-first-four>
+    <div class="lg:hidden pr-6">
+      <div class="grid grid-cols-2 gap-3" data-display-first-four>
         {% for product in collections[collection_handle].products %}
           <div class="mobile-view-more">
-            {%  render 'product-card', product: product %}
+            {% render 'product-card', product: product %}
           </div>
         {% endfor %}
       </div>
-      <button class="py-4 px-6 w-full bg-[#1c1d1d] text-white rounded-full cursor-pointer" data-view-all-button>
+      <button
+        class="mt-3 py-4 px-6 w-full bg-[#1c1d1d] text-white rounded-full cursor-pointer tracking-[0.03em]"
+        data-view-all-button
+      >
         Show More
       </button>
     </div>

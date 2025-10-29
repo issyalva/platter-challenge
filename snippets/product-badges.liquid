@@ -1,9 +1,9 @@
+{% assign badge_styles = 'border border-black rounded-full font-bebas text-[8px] lg:text-[10px] py-0.5 px-1.5 flex items-center tracking-[0.04em]' %}
 <div class="flex justify-between {{ class }}">
-  {% assign badge_styles = 'border border-black rounded-full font-bebas text-[10px] py-0.5 px-1.5 flex items-cente' %}
   {% if product.tags contains 'badge:best-seller' %}
     <span class="{{  badge_styles }} bg-white">Best Seller</span>
   {% endif %}
-  
+
   {% if product.price < product.compare_at_price %}
     <span class="{{  badge_styles }} bg-[#5C7962] text-white ml-auto">Save 15%</span>
   {% endif %}

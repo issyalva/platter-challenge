@@ -1,12 +1,10 @@
 <div class="product-card">
   <a href="{{ product.url }}" class="group block w-full h-full relative" aria-label="View {{ product.title | escape }}">
-    {% render 'product-badges',
-      product: product,
-      class: 'absolute top-0 w-full z-10 p-2'
-    %}
+    {% render 'product-badges', product: product, class: 'absolute top-0 w-full z-10 p-2' %}
     <div class="aspect-square rounded-[10px] overflow-hidden w-full max-w-[355px] h-full max-h-[355px] relative">
       <div class="relative inset-0 transition-opacity duration-300 group-hover:opacity-0">
-        {% render 'image',
+        {%
+          render 'image',
           image: product.featured_image,
           width: 600,
           height: 600,
@@ -16,7 +14,8 @@
       </div>
       {% if product.images[1] != blank %}
         <div class="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          {% render 'image',
+          {%
+            render 'image',
             image: product.images[1],
             width: 600,
             height: 600,
@@ -27,11 +26,13 @@
       {% endif %}
     </div>
   </a>
-  <div class="grid gap-y-2 p-3">
+  <div class="grid gap-y-2 p-2">
     <a href="{{ product.url }}" class="hover:no-underline">
-      <span class="font-bebas text-lg">{{ product.title }}</span>
+      <span class="font-bebas text-base lg:text-lg leading-none tracking-[0.03em]">{{ product.title }}</span>
     </a>
     {% render 'product-card-reviews' %}
-    <p aria-label="Price: {{ product.price | money }}" class="font-poppins font-medium text-base text-[#1C1D1D]">{{ product.price | money }}</p>
+    <p aria-label="Price: {{ product.price | money }}" class="font-poppins font-medium text-base text-[#1C1D1D]">
+      {{ product.price | money }}
+    </p>
   </div>
 </div>
