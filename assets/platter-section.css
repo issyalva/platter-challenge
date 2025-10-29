@@ -9,16 +9,12 @@
   position: absolute;
   width: 100%;
   transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  will-change: opacity, max-height;
 }
 
-[data-display-first-four] > .mobile-view-more:nth-child(-n+4) {
+[data-display-first-four] > .mobile-view-more:nth-child(-n+4),
+[data-display-first-four] > .mobile-view-more.open {
   position: static;
-  max-height: none;
-  opacity: 1;
-}
-
-.mobile-view-more.open {
-  position: static;
-  max-height: var(--target-height);
+  max-height: var(--target-height, 900px);
   opacity: 1;
 }
